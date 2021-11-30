@@ -1,4 +1,4 @@
 class ReviewSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :description, :score, :collge_id
+  attributes :title, :description, :score, :college_id
 end
