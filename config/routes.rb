@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  #get 'pages/index'
+  root to: 'pages#index'
+ 
   namespace :api do
     namespace :v1 do 
       resources :colleges, param: :slug
       resources :reviews, only: [:create, :destroy]
     end
   end
+   get '*path', to: 'pages#index', via: :all
 
- get '*path', to: 'pages#index', via: :all
 end
