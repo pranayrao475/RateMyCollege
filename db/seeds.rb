@@ -32,8 +32,10 @@ colleges = College.create([
       image_url: "https://1000logos.net/wp-content/uploads/2018/02/Stanford-University-Logo.jpg" 
     }
   ])
-  puts "🌱 Creating Reviews..."
-
+  puts "🌱 Creating Users..."
+  test = User.create(username: "Test", password: "asdf", password_confirmation: "asdf")
+  pranay = User.create(username: "Pranay", password: "asdf", password_confirmation: "asdf")
+puts "🌱 Creating Reviews..."
   reviews = Review.create([
     {
         title: "Great University",

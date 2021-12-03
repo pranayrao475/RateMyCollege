@@ -10,6 +10,15 @@ module Api
                college = College.find_by(slug: params[:slug])
                render json: CollegeSerializer.new(college, options).serialized_json
             end
+            # def show
+            #     college = College.find_by(slug: params[:slug])
+            #     if college
+            #         render json: college, status: :ok
+            #     else
+            #         render json: {error: "college not found"}, status: :not_found
+            #     end
+            # end
+        
 
             def create
                 college = College.new(college_params)

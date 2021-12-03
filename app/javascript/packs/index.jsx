@@ -5,16 +5,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/App'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom'
+// import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   ReactDOM.render(
+//   <Router>
+//    <Routes>
+//      <Route exact path="/" element={<App/>}/>
+//    </Routes>
+//    </Router>,
+//     document.body.appendChild(document.createElement('div')),
+//   )
+// })
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-  <Router>
-   <Routes>
-     <Route exact path="/" element={<App/>}/>
-   </Routes>
-   </Router>,
-    document.body.appendChild(document.createElement('div')),
-  )
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+ document.body.appendChild(document.createElement('div'))
+)
 })
