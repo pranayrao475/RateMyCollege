@@ -8,9 +8,13 @@
 puts "🌱 Creating Colleges..."
 colleges = College.create([
     { 
+      name: "Flatiron School",
+      image_url: "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook"
+    }, 
+    { 
       name: "Princeton University",
       image_url: "https://www.symbols.com/images/symbol/1274_princeton-university-seal.png"
-    }, 
+    },
     { 
       name: "Columbia University",
       image_url: "https://logos-world.net/wp-content/uploads/2020/06/Columbia-Lions-Logo-2006-Present.jpg"
@@ -30,6 +34,38 @@ colleges = College.create([
     { 
       name: "Stanford University",
       image_url: "https://1000logos.net/wp-content/uploads/2018/02/Stanford-University-Logo.jpg" 
+    }, 
+    { 
+      name: "Rutgers University",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/08/Rutgers-University-Emblem.jpg"
+    }, 
+    { 
+      name: "Penn State University",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/11/penn-state-logo-768x563.png"
+    }, 
+    { 
+      name: "Duke University",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/11/Duke-University-Logo-768x532.png"
+    }, 
+    { 
+      name: "Michigan State University",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/10/michigan-state-university-logo.jpg"
+    }, 
+    { 
+      name: "Ohio State University",
+      image_url: "https://1000logos.net/wp-content/uploads/2018/01/Ohio-State-Logo-768x432.png"
+    }, 
+    { 
+      name: "University of Arizona",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/07/University-of-Arizona-Logo-768x706.png"
+    }, 
+    { 
+      name: "Texas Tech University",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/08/texas-tech-university-logo-768x494.jpg"
+    }, 
+    { 
+      name: "University of Georgia",
+      image_url: "https://1000logos.net/wp-content/uploads/2017/12/university-of-georgia-logo-768x432.png"
     }
   ])
   puts "🌱 Creating Users..."
@@ -47,7 +83,31 @@ puts "🌱 Creating Reviews..."
         title: "Great University",
         description: "Realy Great college.",
         score: 5,
-        college: colleges.last
-    }
+        college: colleges.second
+    },
+    {
+      title: "Great University",
+      description: "Realy Great college.",
+      score: 5,
+      college: colleges.third
+  }, 
+  {
+      title: "Great University",
+      description: "Realy Great college.",
+      score: 5,
+      college: colleges.last
+  },
+  {
+    title: "Great University",
+    description: "Realy Great college.",
+    score: 5,
+    college: colleges.fourth
+}, 
+{
+    title: "Great University",
+    description: "Realy Great college.",
+    score: 5,
+    college: colleges.last
+}
   ])
   puts "✅ Done seeding!"

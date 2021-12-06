@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  padding:100px 100px 10px 100px;
+  padding:80px 100px 10px 100px;
+  
   
   h1 {
     font-size:42px;
