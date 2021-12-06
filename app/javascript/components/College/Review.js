@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import Rating from '../Rating/Rating'
 
 
-const Review = (props)=>{
-const{score,title, description} = props.attributes
+const Review = ({attributes, ...props}) => {
+  const {title, description, score} = attributes
         return (
             <Card>
                 <RatingContainer>
@@ -12,6 +12,14 @@ const{score,title, description} = props.attributes
                 </RatingContainer>
                 <Title>{title}</Title>
                 <Description>{description}</Description>
+                <Options>
+                <Icon onClick={props.handleDestroy.bind(this, props.id)}>
+                  <i className="fa fa-trash"></i>
+                </Icon>
+                <Icon>
+                  <i className="fa fa-pencil"></i>
+                </Icon>
+              </Options>
             </Card>
         )
 }
@@ -49,4 +57,12 @@ right :15px;
 top: 15px;
 display: flex;
 flex-direction: columns;
+`
+const Icon = styled.button`
+  box-shadow: none;
+  border-radius: 4px;
+  margin: 0 4px;
+  i {
+    font-size: 18px;
+  }
 `

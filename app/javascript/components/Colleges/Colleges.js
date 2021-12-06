@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import College from "./College"
 import styled from 'styled-components'
-
+import Header from './Header'
 
 const Colleges = () => {
     const [colleges, setColleges] = useState([])
@@ -22,10 +22,7 @@ const Colleges = () => {
         })
     return  (
         <Home>
-                <Header>
-                    <h1>RateMyCollege</h1>
-                    <Subheader>Honest, unbaised college reviews.</Subheader>
-                </Header>
+                <Header/>
                 <Grid>
                 {grid}
                 </Grid>
@@ -43,18 +40,8 @@ max-width: 1200px;
 margin-left: auto;
 margin-right: auto;
 `
-const Header = styled.div`
-padding: 100px 100px 10px 100px;
 
-h1
-{
-    font-size: 42px;
-}
-`
-const Subheader = styled.div`
-font-weight: 300;
-font-size: 26px;
-`
+
 const Grid = styled.div`
 display: grid;
 grid-template-columns: repeat(4, 1fr);

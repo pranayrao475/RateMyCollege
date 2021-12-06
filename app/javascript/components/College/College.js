@@ -5,6 +5,7 @@ import Header from './Header';
 import ReviewForm from "./ReviewForm";
 import Review from "./Review";
 import styled from 'styled-components'
+import AxiosWrapper from'../../utils/Requests/AxiosWrapper'
 
 
 const Wrapper= styled.div`
@@ -38,17 +39,22 @@ padding-left: 60px;
 
 const College = (props) => {
     const [college, setCollege] = useState({})
-    const [review, setReview]= useState({})
+    const [reviews, setReviews] = useState([])
+    const [review, setReview]= useState({title: '', description: '', score: 0 })
     const [loaded, setLoaded] = useState(false)
+    const [error, setError] = useState('')
     const { slug } = useParams();
    
     useEffect(() =>{
-        
+   
+       // const slug = props.match.params.slug
+
         const url = `/api/v1/colleges/${slug}`
-        axios.get(url)
+        AxiosWrapper.get(url)
         .then(resp => {
     
             setCollege(resp.data)
+            setReviews(resp.data.included)
             setLoaded(true)
         })
         .catch(resp => console.log(resp))
@@ -59,41 +65,71 @@ const College = (props) => {
     e.preventDefault()
     
     setReview(Object.assign({}, review, {[e.target.name]: e.target.value}))
+    
   }
 
   // Create a review
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    const csrfToken = document.querySelector('[name= csrf-token]').content
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
-
-    const college_id= college.data.id
-    axios.post('/api/v1/reviews', {review, college_id})
-    .then(resp => {
-        const included = [...college.included, resp.data.data]
-  
-        setCollege({...college, included })
+    const college_id = parseInt(college.data.id)
+   
+    AxiosWrapper.post('/api/v1/reviews', {...review, college_id})
+    .then( (resp) => {
+        setReviews([...reviews, resp.data.data])
         setReview({title:'', description:'',score: 0})
+        setError('')
     })
-    .catch(resp => {})
+    .catch( resp => {
+        let error
+        switch(resp.message){
+          case "Request failed with status code 401":
+            error = 'Please log in to leave a review.'
+            break
+          default:
+            error = 'Something went wrong.'
+        }
+        setError(error)
+      })
 
-    
-    
   }
+  // Delete Review
+  const handleDestroy = (id, e) => {
+    e.preventDefault()
+
+    AxiosWrapper.delete(`/api/v1/reviews/${id}`)
+    .then( (data) => {
+
+      const included = [...reviews]
+      console.log(included)
+      const index = included.findIndex( (data) => data.id == id )
+      included.splice(index, 1)
+
+      setReviews(included)
+    })
+    .catch( data => console.log('Error', data) )
+  }
+
   const setRating = (score, e) => {
     e.preventDefault()
     setReview({...review, score})
         }
 
-let reviews
-if(loaded && college.included) {
-        reviews = college.included.map((item, index) => {
+        let total, average = 0
+        let userReviews
+if(reviews && reviews.length > 0) {
+    total = reviews.reduce((total, review) => total + review.attributes.score, 0)
+    average = total > 0 ? (parseFloat(total) / parseFloat(reviews.length)) : 0
+
+
+        userReviews = reviews.map((review, index) => {
+           
            
             return (
                 <Review
                 key={index}
-                attributes={item.attributes}
+                id={review.id}
+                attributes={review.attributes}
+                handleDestroy={handleDestroy}
                 />
             )
         })
@@ -108,18 +144,20 @@ if(loaded && college.included) {
                                 <Main>
                                     <Header
                                     attributes={college.data.attributes}
-                                    reviews = {college.included}
+                                    reviews = {reviews}
+                                    average={average}
                                     />
-                                {reviews}
+                                {userReviews}
                                 </Main>
                             </Column>
                             <Column>
                                 <ReviewForm
+                                name={college.data.attributes.name}
+                                review={review}
                                 handleChange={handleChange}
                                 handleSubmit={handleSubmit}
                                 setRating={setRating}
-                                attributes= {college.data.attributes}
-                                review={review}
+                                error={error}
                                 />
                             </Column>
                         </Fragment>

@@ -4,15 +4,17 @@
   }
   
   .stars {
-    color: #fcc201;
+    color: #ffc315;
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
     white-space: nowrap;
+   
   }
   
   .star-wrapper::before, .stars::before {
-    font-family: "FontAwesome";
+    font-family: "Font Awesome 5 Free";
     content: "\f005 \0020 \f005 \0020 \f005 \0020 \f005 \0020 \f005";
+    font-weight: 900;
   }

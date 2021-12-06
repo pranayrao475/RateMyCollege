@@ -16,12 +16,12 @@ const ReviewForm = (props) =>{
     return (
         <ReviewWrapper>
             <form onSubmit={props.handleSubmit}>
-                <ReviewHeadline> Have an experinece with {props.attributes.name}? Share your review</ReviewHeadline>
+                <ReviewHeadline> Have an experinece with {props.name}? Share your review</ReviewHeadline>
                 <Field>
-                    <input onChange={props.handleChange} value={props.review.title}type="text" name="title " placeholder="Review title"/>
+                    <input onChange={props.handleChange} value={props.title}type="text" name="title " placeholder="Review title"/>
                 </Field>
                 <Field>
-                    <input onChange={props.handleChange} value={props.review.description} type="text" name="description " placeholder="Description"/>
+                    <input onChange={props.handleChange} value={props.description} type="text" name="description " placeholder="Description"/>
                 </Field>
                 <Field>
                    <RatingContainer>
@@ -32,6 +32,10 @@ const ReviewForm = (props) =>{
                    </RatingContainer>
                 </Field>
                 <SubmitBtn type="submit" >Submit you review</SubmitBtn>
+                { 
+          props.error && 
+          <Error>{props.error}</Error>
+        }
             </form>
         </ReviewWrapper>
     )
@@ -128,6 +132,7 @@ const Field = styled.div`
     border: 1px solid #E6E6E6;
     margin: 12px 0;
     padding: 12px;
+    font-size: 15px;
   }
   
   textarea {
