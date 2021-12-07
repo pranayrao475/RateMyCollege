@@ -44,7 +44,8 @@ const Card = styled.div`
 const Title = styled.div`
   padding: 20px 0px 0px 0px;
   font-family: 'Poppins-Bold';
-  font-size: 18px;
+  font-size: 24px;
+  
 `
 
 const Description = styled.div`

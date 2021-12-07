@@ -68,9 +68,9 @@ colleges = College.create([
       image_url: "https://1000logos.net/wp-content/uploads/2017/12/university-of-georgia-logo-768x432.png"
     }
   ])
-  puts "🌱 Creating Users..."
-  test = User.create(username: "Test", password: "asdf", password_confirmation: "asdf")
-  pranay = User.create(username: "Pranay", password: "asdf", password_confirmation: "asdf")
+  # puts "🌱 Creating Users..."
+  # test = User.create(username: "Test", password: "asdf", password_confirmation: "asdf")
+  # pranay = User.create(username: "Pranay", password: "asdf", password_confirmation: "asdf")
 puts "🌱 Creating Reviews..."
   reviews = Review.create([
     {

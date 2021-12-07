@@ -12,6 +12,8 @@ const Wrapper = styled.nav`
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
+  position: fixed;
+  z-index: 1000;
 `
 
 const Container = styled.div`

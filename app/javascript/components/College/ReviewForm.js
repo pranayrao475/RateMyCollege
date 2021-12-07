@@ -18,10 +18,10 @@ const ReviewForm = (props) =>{
             <form onSubmit={props.handleSubmit}>
                 <ReviewHeadline> Have an experinece with {props.name}? Share your review</ReviewHeadline>
                 <Field>
-                    <input onChange={props.handleChange} value={props.title}type="text" name="title " placeholder="Review title"/>
+                    <input onChange={props.handleChange} value={props.title}type="text" name="title" placeholder="Review title"/>
                 </Field>
                 <Field>
-                    <input onChange={props.handleChange} value={props.description} type="text" name="description " placeholder="Description"/>
+                    <input onChange={props.handleChange} value={props.description} type="text" name="description" placeholder="Description"/>
                 </Field>
                 <Field>
                    <RatingContainer>

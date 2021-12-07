@@ -27,7 +27,7 @@ background: rgba(240, 226, 233, 0.8);
   }
   &:last-child {
     background: white;
-    border-top : 1px solid red;
+    border-top : 10px solid rgba(240, 226, 233, 0.8);
     
   }
 `
@@ -47,7 +47,9 @@ const College = (props) => {
    
     useEffect(() =>{
    
-       // const slug = props.match.params.slug
+       //const slug = props.match.params.slug
+
+       console.log(props)
 
         const url = `/api/v1/colleges/${slug}`
         AxiosWrapper.get(url)
@@ -73,23 +75,27 @@ const College = (props) => {
     e.preventDefault()
     const college_id = parseInt(college.data.id)
    
+    console.log("ID", college_id);
+    console.log("REV", review);
+
     AxiosWrapper.post('/api/v1/reviews', {...review, college_id})
     .then( (resp) => {
         setReviews([...reviews, resp.data.data])
         setReview({title:'', description:'',score: 0})
         setError('')
     })
-    .catch( resp => {
-        let error
-        switch(resp.message){
-          case "Request failed with status code 401":
-            error = 'Please log in to leave a review.'
-            break
-          default:
-            error = 'Something went wrong.'
-        }
-        setError(error)
-      })
+    .catch(resp => console.log(resp))
+    // .catch( resp => {
+    //     let error
+    //     switch(resp.message){
+    //       case "Request failed with status code 401":
+    //         error = 'Please log in to leave a review.'
+    //         break
+    //       default:
+    //         error = 'Something went wrong.'
+    //     }
+    //     setError(error)
+    //   })
 
   }
   // Delete Review
@@ -145,7 +151,7 @@ if(reviews && reviews.length > 0) {
                                     <Header
                                     attributes={college.data.attributes}
                                     reviews = {reviews}
-                                    average={average}
+                                    average={average.toFixed(2)}
                                     />
                                 {userReviews}
                                 </Main>
