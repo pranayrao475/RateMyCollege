@@ -1,10 +1,10 @@
-# README
-RateMyCollege
+# RateMyCollege
+
 A College reviews app built with Ruby on Rails and React.js
 
 This app is intended to be a simple example of a CRUD app built with Ruby on Rails and React.js using Webpacker and postgreSQL
 
-![logo](https://github.com/pranayrao475/RateMyCollege/blob/main/app/javascript/components/img.png)
+# ![logo](https://github.com/pranayrao475/RateMyCollege/blob/main/app/javascript/components/img.png)
 
 
 * Ruby version
