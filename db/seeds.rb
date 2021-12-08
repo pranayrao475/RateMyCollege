@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "🌱 Creating Colleges..."
 colleges = College.create([
+  { 
+    name: "Hudson County Community College",
+    image_url: "https://s3.amazonaws.com/libapps/accounts/3054/images/HCCC_OFFICIAL_Logo_color_reversed.jpg"
+  },
     { 
       name: "Flatiron School",
       image_url: "https://mma.prnewswire.com/media/1488233/Flatiron_Primary__Logo_Blue_highres_Logo.jpg?p=facebook"

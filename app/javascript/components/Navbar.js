@@ -5,14 +5,14 @@ import { Route, Link } from 'react-router-dom'
 
 const Wrapper = styled.nav`
   width: 100%;
-  height: 85px;
-  line-height: 65px;
+  height: 75px;
+  line-height: 85px;
   background-color: black;
   color: white;
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-  position: fixed;
+  //position: fixed;
   z-index: 1000;
 `
 

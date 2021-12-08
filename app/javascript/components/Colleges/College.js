@@ -6,6 +6,7 @@ import Rating from '../Rating/Rating'
 const Card = styled.div`
     border: 1px solid #efefef;
     background: #fff;
+    
    
 
 `
@@ -43,6 +44,8 @@ const LinkWrapper = styled.div`
 
 
 const College = (props) => {
+   
+    
     return (
         <Card>
             <Collegelogo>

@@ -6,13 +6,13 @@ import Header from './Header'
 
 const Colleges = () => {
     const [colleges, setColleges] = useState([])
-
+    
         useEffect(() =>{
             axios.get('/api/v1/colleges.json')
             .then( resp => {setColleges(resp.data.data)})
             .catch( resp => console.log(resp))
-        }, [colleges.length])
-
+        }, [])
+       
         const grid = colleges.map( item => {
             return(
             <College 
@@ -20,8 +20,11 @@ const Colleges = () => {
             attributes = {item.attributes}
             />)
         })
+     
+       
     return  (
         <Home>
+                {/* {!colleges.length==0 ? <Header colleges={colleges} />:null} */}
                 <Header/>
                 <Grid>
                 {grid}
@@ -36,7 +39,7 @@ export default Colleges
 
 const Home = styled.div`
 text-align: center;
-max-width: 1200px;
+max-width: 1300px;
 margin-left: auto;
 margin-right: auto;
 
