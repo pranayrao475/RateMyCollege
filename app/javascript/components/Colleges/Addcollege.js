@@ -5,37 +5,47 @@ import axios from "axios";
 
 
 const Addcollege = (props) => {
-    // const [isform, setIsform] = useState({  })
-    // const [addcollege, setAddcollege] = useState([])
-    // const [error, setError] = useState('')
-    // function handleChange(e){
-    //     //e.preventDefault()
-    //     setIsform({...isform, [e.target.name]: e.target.value})
-    //     console.log(e.target.name)
-    // }
-    // function handleSubmit(e){
-    //     e.preventDefault()
-    //     axios.post('/api/v1/colleges', {...college, college_id})
-    //     .then( (resp) => {
-    //         setAddcollege([...colleges, resp.data.data])
-    //         setAddcollege({name:'', img_url:''})
-    //         setError('')
-    //     })
-    //     .catch(resp => console.log(resp))
+  
+    const [name, setName] = useState("")
+    const [image_url, setImage_url] = useState("")
+   
+
+    const handleSubmit = (e) =>{
+      e.preventDefault()
+    const college = { name: name, image_url: image_url}
+
+    fetch('/api/v1/colleges/', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(college)
+    })
+    .then(res => res.json())
+    .then(createdCollege => {
+      setName("")
+      setImage_url("")
+      props.addNewCollegeToState(createdCollege)
+    })
+  }
+
+    
+   
 return(
     <Card> 
-    <form >
-                
+    <form  onSubmit={handleSubmit}>
+   
                 <Wrapper>
                 <Field>
-                    <input type="text" name="College" placeholder="College name"/>
+                    <input type="text" value={name} name="College" onChange={(e) => setName(e.target.value)} placeholder="College name"/>
                 </Field>
                 <Field>
-                    <input   type="text" name="AddImage" placeholder="College Logo"/>
+                    <input   type="text" value={image_url} name="AddImage" onChange={(e) => setImage_url(e.target.value)}placeholder="College Logo"/>
                 </Field>
                 <SubmitBtn type="submit" >Add College</SubmitBtn>
+               
                 </Wrapper>
-
+                
     </form>
     
     </Card>
@@ -68,11 +78,11 @@ const Wrapper = styled.div`
 
 const SubmitBtn = styled.button`
   color: #fff;
-  background-color: #71b406;
+  background-color: black;
   border-radius: 4px;   
   padding:5px 5px;  
   border: 1px solid #71b406;
-  width:30%;
+  width:20%;
   font-size:12px;
   cursor: pointer;
   transition: ease-in-out 0.2s;

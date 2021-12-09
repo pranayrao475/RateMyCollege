@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components'
 
-function SearchBar({isSearch, setIsSearch}){
+function SearchBar({updateSearchTerm, searchTerm}){
     
-    function searchCollege(e){
-        console.log(e.target.value)
-        setIsSearch(e.target.value)
-    }
+  
 return (
 <Searchwrapper>
     <h3></h3>
@@ -14,8 +11,8 @@ return (
             type="text" 
             placeholder="    Search for your college to get started                                                          🔍" 
             name="search"
-            onChange={searchCollege}
-            value={isSearch}
+            onChange={updateSearchTerm}
+            value={searchTerm}
     />
    
     </Searchwrapper>

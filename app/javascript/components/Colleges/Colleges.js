@@ -6,17 +6,31 @@ import Header from './Header'
 
 const Colleges = () => {
     const [colleges, setColleges] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
+
+    function updateSearchTerm(e) {
+        const term = e.target.value
+        setSearchTerm(term)
+    }
+
+    function addNewCollegeToState(newCollege){
+      const newCollegeList = [...colleges, newCollege.data]
+
+      setColleges(newCollegeList)
+    }
     
         useEffect(() =>{
             axios.get('/api/v1/colleges.json')
             .then( resp => {setColleges(resp.data.data)})
             .catch( resp => console.log(resp))
         }, [])
+
+        const filteredColleges = colleges.filter(college => college.attributes.name.toLowerCase().includes(searchTerm.toLowerCase()))
        
-        const grid = colleges.map( item => {
+        const grid = filteredColleges.map( item => {
             return(
             <College 
-            key={item.attributes.name}
+            key={item.attributes.id}
             attributes = {item.attributes}
             />)
         })
@@ -24,8 +38,8 @@ const Colleges = () => {
        
     return  (
         <Home>
-                {/* {!colleges.length==0 ? <Header colleges={colleges} />:null} */}
-                <Header/>
+              
+                <Header updateSearchTerm={updateSearchTerm} searchTerm={searchTerm} addNewCollegeToState={addNewCollegeToState} />
                 <Grid>
                 {grid}
                 </Grid>

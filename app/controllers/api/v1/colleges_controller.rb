@@ -21,6 +21,7 @@ module Api
         
 
             def create
+                
                 college = College.new(college_params)
                 if college.save
                     render json: CollegeSerializer.new(college).serialized_json
