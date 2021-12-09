@@ -13,6 +13,7 @@ return (
             name="search"
             onChange={updateSearchTerm}
             value={searchTerm}
+            autocomplete="off"
     />
    
     </Searchwrapper>

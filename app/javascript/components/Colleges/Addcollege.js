@@ -33,11 +33,11 @@ const Addcollege = (props) => {
    
 return(
     <Card> 
-    <form  onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit} >
    
                 <Wrapper>
                 <Field>
-                    <input type="text" value={name} name="College" onChange={(e) => setName(e.target.value)} placeholder="College name"/>
+                    <input type="text" value={name} name="College" onChange={(e) => setName(e.target.value)} placeholder="College name" autocomplete="off"/>
                 </Field>
                 <Field>
                     <input   type="text" value={image_url} name="AddImage" onChange={(e) => setImage_url(e.target.value)}placeholder="College Logo"/>

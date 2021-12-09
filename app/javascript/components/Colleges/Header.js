@@ -11,7 +11,21 @@ const Wrapper = styled.div`
   h1 {
     font-size:42px;
   }
-  
+  button {
+    color: #fff;
+  background-color: black;
+  border-radius: 4px;   
+  padding:12px 12px;  
+  border: 1px solid #71b406;
+  // width:100%;
+  // font-size:18px;
+   cursor: pointer;
+  // transition: ease-in-out 0.2s;
+  // &:hover {
+  //   background: #71b406;
+  //   border-color: #71b406;
+  // }
+  }
 `
 
 const Subheader = styled.p`
