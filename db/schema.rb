@@ -33,12 +33,5 @@ ActiveRecord::Schema.define(version: 2021_12_02_145522) do
     t.index ["college_id"], name: "index_reviews_on_college_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "reviews", "colleges"
 end
