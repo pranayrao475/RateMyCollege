@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import React, { useState } from "react";
  import SearchBar from './Searbar';
+ import Addcollege from './Addcollege';
 // import College from "./College"
 
 const Wrapper = styled.div`
@@ -9,6 +10,15 @@ const Wrapper = styled.div`
   
   h1 {
     font-size:42px;
+  }
+  a{
+    color: red;
+        //background: #000;
+        border-radius: 4px;
+        padding: 10px 50px;
+       // border: 1px solid #000;
+        width: 100%;
+        text-decoration: none;
   }
 `
 
@@ -19,6 +29,7 @@ const Subheader = styled.p`
 
 const Header = (colleges) => {
   const [isSearch, setIsSearch]= useState([])
+  const [isvisible, setisvisible] = useState(false)
   if (colleges.length==0)
   {
     
@@ -28,6 +39,10 @@ return(
     </>
     )
   }
+  function click(e){
+    e.preventDefault()
+   setisvisible(isvisible => !isvisible)
+}
   // let mySearch = colleges.filter(s => s.attributes.name.includes(isSearch))
   return(
     <Wrapper>
@@ -36,6 +51,8 @@ return(
     <h1>RateMyCollege</h1>
     <Subheader>Honest, unbiased College reviews. Share your experience.</Subheader>
     <SearchBar isSearch={isSearch} setIsSearch={setIsSearch}/> 
+    <a onClick={click} > Add New College {isvisible ?  <Addcollege />: null}</a>
+    
     </Wrapper>
   )
 }

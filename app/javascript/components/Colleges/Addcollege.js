@@ -5,54 +5,74 @@ import axios from "axios";
 
 
 const Addcollege = (props) => {
-    const [isform, setisform] = useState({  })
-    const [addcollege, setAddcollege] = useState([])
-    const [error, setError] = useState('')
-    function handleChange(e){
-        //e.preventDefault()
-        setisform({...isform, [e.target.name]: e.target.value})
-        console.log(e.target.name)
-    }
-    function handleSubmit(e){
-        e.preventDefault()
-        console.log(e)
-        axios.post('/api/v1/colleges', {...college})
-        .then( (resp) => {
-            setAddcollege([...colleges, resp.data.data])
-            setAddcollege({name:'', img_url:''})
-            setError('')
-        })
-        .catch(resp => console.log(resp))
+    // const [isform, setIsform] = useState({  })
+    // const [addcollege, setAddcollege] = useState([])
+    // const [error, setError] = useState('')
+    // function handleChange(e){
+    //     //e.preventDefault()
+    //     setIsform({...isform, [e.target.name]: e.target.value})
+    //     console.log(e.target.name)
+    // }
+    // function handleSubmit(e){
+    //     e.preventDefault()
+    //     axios.post('/api/v1/colleges', {...college, college_id})
+    //     .then( (resp) => {
+    //         setAddcollege([...colleges, resp.data.data])
+    //         setAddcollege({name:'', img_url:''})
+    //         setError('')
+    //     })
+    //     .catch(resp => console.log(resp))
 return(
-    <> 
-    <form onSubmit={props.handleSubmit}>
-                <h3> Don't see your college add here</h3>
+    <Card> 
+    <form >
+                
+                <Wrapper>
                 <Field>
-                    <input onChange={props.handleChange} type="text" name="College" placeholder="College name"/>
+                    <input type="text" name="College" placeholder="College name"/>
                 </Field>
                 <Field>
-                    <input onChange={props.handleChange}  type="text" name="AddImage" placeholder="College Logo"/>
+                    <input   type="text" name="AddImage" placeholder="College Logo"/>
                 </Field>
                 <SubmitBtn type="submit" >Add College</SubmitBtn>
+                </Wrapper>
 
     </form>
     
-    </>
+    </Card>
 )
 
 
 }
-}
+
 export default Addcollege
+
+const Card = styled.div`
+   
+    background: #fff;
+   
+    align-items: center;
+
+`
+const Wrapper = styled.div`
+   
+    background: #fff;
+   width: 80%;
+   //display:flex;
+   //flex-direction:row;
+   //justify-content: space-evenly;
+   align-items: center;
+   
+
+`
 
 
 const SubmitBtn = styled.button`
   color: #fff;
   background-color: #71b406;
   border-radius: 4px;   
-  padding:12px 12px;  
+  padding:5px 5px;  
   border: 1px solid #71b406;
-  width:100%;
+  width:30%;
   font-size:12px;
   cursor: pointer;
   transition: ease-in-out 0.2s;
@@ -64,8 +84,8 @@ const SubmitBtn = styled.button`
 const Field = styled.div`
   border-radius: 4px;
   input {
-    width: 96%;
-    min-height:30px;
+    width: 70%;
+    min-height:15px;
     border-radius: 4px;
     border: 1px solid #E6E6E6;
     margin: 12px 0;
@@ -74,8 +94,8 @@ const Field = styled.div`
   }
   
   textarea {
-    width: 100%;
-    min-height:30px;
+    width: 70%;
+    min-height:15px;
     border-radius: 4px;
     border: 1px solid #E6E6E6;
     margin: 12px 0;
