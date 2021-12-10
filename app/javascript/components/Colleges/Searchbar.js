@@ -34,7 +34,7 @@ border-radius: 4px;
     margin: 12px 10px;
     padding: 12px;
     font-size: 20px;
-    cursor: pointer;
+    
    
   }
   
