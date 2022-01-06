@@ -28,7 +28,7 @@ const Searchwrapper= styled.div`
 border-radius: 4px;
   input {
     width: 66%;
-    min-height:35px;
+    min-height:36px;
     border-radius: 4px;
     border: 1px solid #E6E6E6;
     margin: 12px 10px;

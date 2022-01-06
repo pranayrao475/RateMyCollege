@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   padding:12px 12px;  
   border: 1px solid #71b406;
   // width:100%;
-  // font-size:18px;
+  // font-size:16px;
    cursor: pointer;
   // transition: ease-in-out 0.2s;
   // &:hover {
