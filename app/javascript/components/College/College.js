@@ -70,7 +70,7 @@ const College = (props) => {
     
   }
 
-  // Create a review
+  // Create a new review 
   const handleSubmit = (e) => {
     e.preventDefault()
     const college_id = parseInt(college.data.id)
